@@ -1,6 +1,7 @@
 module webring::webring;
 
 use sui::types;
+use webring::webring_proposal::WebringProposal;
 
 
 const EDuplicateSite: u64 = 0;
@@ -10,6 +11,7 @@ const ESiteDoesNotExist: u64 = 2;
 
 public struct Webring has key {
     id: UID,
+    owner: address,
     site_ids: vector<ID>
 }
 
@@ -25,6 +27,7 @@ fun init(otw: WEBRING, ctx: &mut TxContext) {
 
     let webring = Webring {
         id: object::new(ctx),
+        owner: ctx.sender(),
         site_ids: vector[]
     };
 
@@ -46,4 +49,21 @@ public fun remove_site(self: &mut Webring, _webring_cap: &WebringCap, site_id: I
     assert!(site_exists, ESiteDoesNotExist);
 
     self.site_ids.remove(i);
+}
+
+public fun handle_proposal(
+    self: &mut Webring, 
+    _webring_cap: &WebringCap, 
+    proposal: WebringProposal, 
+    accept: bool
+) {
+    if (accept) {
+        self.site_ids.push_back(proposal.site_id());
+    };
+
+    proposal.remove();
+}
+
+public fun send_proposal(self: &Webring, proposal: WebringProposal) {
+    transfer::public_transfer(proposal, self.owner);
 }
