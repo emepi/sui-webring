@@ -53,14 +53,7 @@ public fun remove(self: Site, site_cap: SiteCap) {
 
     object::delete(id);
 
-    let Site {
-        id,
-        admin: _,
-        title: _,
-        description: _,
-        banner: _,
-        url: _,
-    } = self;
+    let Site { id, .. } = self;
 
     object::delete(id);
 }
