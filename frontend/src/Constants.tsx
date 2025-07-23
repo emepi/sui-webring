@@ -7,5 +7,5 @@ export const DEVNET_ADMIN_CAP = "0xfe0c04b2708fd4c6c72f24eacd229542abbff7481beca
 export const MAINNET_ADMIN_CAP = "0x234";
 
 export const TESTNET_WEBRING_ID = "0x592fc09dddf7217aa3e47471fc72aae92760c890a82056dff0be818b8e73f8f0";
-export const DEVNET_WEBRING_ID = "0xe6fecf3c4d8e9a61923a9bce261f1b7ffdff414d6e2231e50d0ceb67fcb4d63f";
+export const DEVNET_WEBRING_ID = "0x91c04aa71b08969df93a67983ed614679e1adaadd6f3e4250b19847207f06968";
 export const MAINNET_WEBRING_ID= "0x234";
