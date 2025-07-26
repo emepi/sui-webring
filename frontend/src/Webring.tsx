@@ -3,8 +3,8 @@ import { Flex, Heading, Text } from "@radix-ui/themes";
 import { useNetworkVariable } from "./networkConfig";
 import { SuiObjectData } from "@mysten/sui/client";
 
-export function OwnedObjects() {
-  //const account = useCurrentAccount();
+export function Webring() {
+  const account = useCurrentAccount();
 
   const  webring_id = useNetworkVariable("webring_id");
 
@@ -27,6 +27,8 @@ export function OwnedObjects() {
   }
 
   if(!data.data) return <div className="text-center text-red-500">Not Found...</div>;
+
+  const ownedByCurrentAccount = getWebringSites(data.data)?.owner === account?.address;
 
   return (
     <Flex direction="column" my="2">
