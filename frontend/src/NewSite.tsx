@@ -66,7 +66,7 @@ const NewSite = () => (
 						<Form.Label className="FormLabel">Banner URL</Form.Label>
 					</div>
 					 <Form.Control asChild>
-				        <input className="Input" type="text" required />
+				        <input className="Input" type="text"/>
 			         </Form.Control>
 
 					 </Form.Field>
