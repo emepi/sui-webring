@@ -12,7 +12,12 @@ const NewSite = () => (
 			<Dialog.Overlay className="DialogOverlay" />
 			<Dialog.Content className="DialogContent">
 				<Dialog.Title className="DialogTitle">Add Site</Dialog.Title>
-				   <Form.Root className="FormRoot">
+				   <Form.Root className="FormRoot"
+				    onSubmit={(event) => {
+					    event.preventDefault();
+						console.log(new FormData(event.target as HTMLFormElement));
+				    }}
+				   >
 					 <Form.Field className="FormField" name="title">
 					<div
 				        style={{
@@ -85,6 +90,11 @@ const NewSite = () => (
 
 					 </Form.Field>
 
+					 <Form.Submit asChild>
+			            <button className="Button" style={{ marginTop: 10 }}>
+				            Submit site
+			            </button>
+		            </Form.Submit>
 				   </Form.Root>
 				<Dialog.Close asChild>
 					<button className="IconButton" aria-label="Close">
