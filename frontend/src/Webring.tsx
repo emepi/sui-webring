@@ -2,8 +2,6 @@ import { useCurrentAccount, useSuiClientQuery } from "@mysten/dapp-kit";
 import { Flex, Heading, Text } from "@radix-ui/themes";
 import { useNetworkVariable } from "./networkConfig";
 import { SuiObjectData } from "@mysten/sui/client";
-import DialogDemo from "./NewSite";
-import NewSite from "./NewSite";
 
 export function Webring() {
   const account = useCurrentAccount();
@@ -36,7 +34,6 @@ export function Webring() {
 
   return (
     <Flex direction="column" my="2">
-      <NewSite />
       {getWebringSites(data.data)?.site_ids.map( site_id => 
         <div>
           site: {site_id}
